@@ -41,14 +41,15 @@ scale = Vector2(50, 50)
 texture = SubResource("CanvasTexture_7xkkn")
 
 [node name="Sprite2D2" type="Sprite2D" parent="player/Sprite2D"]
-modulate = Color(0.588235, 0.537255, 0.309804, 1)
+modulate = Color(0.321569, 0.564706, 0.870588, 1)
 material = SubResource("CanvasItemMaterial_m7bvt")
 position = Vector2(0, -0.565)
 scale = Vector2(0.2, 2)
 texture = SubResource("CanvasTexture_7xkkn")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="player"]
-polygon = PackedVector2Array(-24, -25, -5, -25, -5, -79, 4, -79, 4, -24, 24, -24, 24, 24, -26, 25)
+modulate = Color(1, 0.490196, 0.568627, 1)
+polygon = PackedVector2Array(-24, -25, -5, -25, -5, -59.4744, -5, -79, 4, -79, 4, -50.0356, 4, -24, 24, -24, 24, 24, -26, 25)
 
 [node name="shoot_point" type="Node2D" parent="player"]
 position = Vector2(0, -87)
