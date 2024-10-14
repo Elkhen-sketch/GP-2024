@@ -1,0 +1,122 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4numkwxjmond"]
+
+[ext_resource type="Script" path="res://shooting_game.gd" id="1_88xoa"]
+
+[sub_resource type="GDScript" id="GDScript_3k3rg"]
+script/source = "extends RigidBody2D
+
+@export var power:float = 0
+@export var rot_power:float = 360
+
+@export var bullet_scene:PackedScene
+@export var bullet_spawn:Node2D
+
+
+
+var f
+
+var can_fire = true;
+
+func _ready():
+	# bullet = load(\"res://bullet.tscn\")
+	# bullet_spawn = get_node(\"shoot_point\")
+	
+	pass
+	
+func _physics_process(delta):
+	
+	var r = Input.get_axis(\"turn_left\", \"turn_right\")
+	apply_torque(rot_power * r)
+	
+	f = Input.get_axis(\"move_backwards\", \"move_forwards\")
+	
+	var force = power * -transform.y * f
+	# DebugDraw2D.set_text(\"Force\", force)
+	if (force.length() > 0):
+		apply_central_force(force)
+		pass
+	# print(\"right: \" + str(transform.x))
+	# print(\"up:\" + str(transform.y))
+	
+	if Input.is_action_pressed(\"fire\") and can_fire:
+		var b = bullet_scene.instantiate()
+		b.global_position = bullet_spawn.global_position
+		b.global_rotation = bullet_spawn.global_rotation
+		get_tree().get_root().add_child(b) 
+		can_fire = false
+		$Timer.start()
+	
+	pass
+	
+
+func _on_timer_timeout():
+	can_fire = true
+	pass # Replace with function body.
+"
+
+[sub_resource type="GDScript" id="GDScript_v8iwj"]
+script/source = "extends Node2D
+
+@export var thing:PackedScene
+
+func _input(event):	
+	if event is InputEventMouseButton and event.pressed:	
+		var new_thing = thing.instantiate()
+		new_thing.global_position = event.global_position
+		new_thing.name = \"block \" + str(event)
+		get_tree().get_root().add_child(new_thing) 
+		
+		## scale = Vector2.ZERO
+		##var tween = create_tween().set_trans(Tween.TRANS_CIRC)
+		##tween.tween_property($\"../block\", \"global_position\", event.position, 1.0)
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_uj583"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="root" type="Node2D"]
+script = ExtResource("1_88xoa")
+
+[node name="shooter" type="RigidBody2D" parent="."]
+script = SubResource("GDScript_3k3rg")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="shooter"]
+script = SubResource("GDScript_v8iwj")
+
+[node name="Sprite2D" type="Sprite2D" parent="shooter"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="shooter/Sprite2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="shooter"]
+
+[node name="shooting point" type="Node2D" parent="shooter"]
+
+[node name="Timer" type="Timer" parent="shooter"]
+
+[node name="spawner" type="Node2D" parent="."]
+script = SubResource("GDScript_uj583")
+
+[node name="ui" type="Node" parent="."]
+
+[node name="Panel" type="Panel" parent="ui"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ui/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
