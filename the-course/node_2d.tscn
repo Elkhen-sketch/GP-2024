@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbwe0rralgjsd"]
+
+[ext_resource type="Texture2D" uid="uid://dnku55dcgmtb2" path="res://icon.svg" id="1_ssgcm"]
+[ext_resource type="Texture2D" uid="uid://c844yfbd26ea8" path="res://sprites/bug.png" id="2_egbrq"]
+[ext_resource type="Script" path="res://bug.gd" id="3_n7lo2"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(235, 256)
+texture = ExtResource("1_ssgcm")
+
+[node name="Bug" type="Sprite2D" parent="."]
+position = Vector2(51, 54)
+texture = ExtResource("2_egbrq")
+script = ExtResource("3_n7lo2")
+speed = null
