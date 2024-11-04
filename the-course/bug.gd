@@ -1,5 +1,6 @@
 extends Sprite2D
 
+
 @export var  speed = 10
 @onready var Player = $"../Player"
 
@@ -12,15 +13,20 @@ func _ready() -> void:
 	pass # Replace with function body.
 	
 	# Called every frame. 'delta' is the elapsed time since the previous
-	func _process(delta: float) -> void:
-		
-		var to_Player:Vector2 = Player.global_position - global_position
-		
-		DebugDraw20.set_text("Notmalized to Player", to_Player.length())
-		
-		global_position = global_position + to_Player * speed * delta
-		
-		
-		pass
+func _process(delta: float) -> void:
+	
+	var to_Player:Vector2 = Player.global_position - global_position
+	
+	
+	DebugDraw2D.set_text("Dist to Player", to_Player.length())
+	
+	to_Player = to_Player.normalized()
+	
+	DebugDraw2D.set_text("Normalized to Player", to_Player.length())
+
+	global_position = global_position + to_Player * speed * delta
+
+
+	pass
 		
 	

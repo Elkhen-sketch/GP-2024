@@ -14,4 +14,3 @@ texture = ExtResource("1_ssgcm")
 position = Vector2(51, 54)
 texture = ExtResource("2_egbrq")
 script = ExtResource("3_n7lo2")
-speed = null
