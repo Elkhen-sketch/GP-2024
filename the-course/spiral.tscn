@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnlh5xpotna2y"]
+[gd_scene load_steps=3 format=3 uid="uid://bnlh5xpotna2y"]
 
 [ext_resource type="Script" uid="uid://du825yqfaxvax" path="res://spiral.gd" id="1_3lw7s"]
+[ext_resource type="Texture2D" uid="uid://b0bmriw24m73f" path="res://addons/Screenshot 2025-02-06 144427.png" id="2_oq8k7"]
 
 [node name="spiral_art" type="Node2D"]
 
@@ -86,6 +87,11 @@ offset_left = 186.0
 offset_top = 241.0
 offset_right = 473.0
 offset_bottom = 257.0
+
+[node name="Screenshot2025-02-06144427" type="Sprite2D" parent="."]
+position = Vector2(1915, 318)
+scale = Vector2(0.873469, 0.863388)
+texture = ExtResource("2_oq8k7")
 
 [connection signal="value_changed" from="r_inc" to="spiral" method="_on_r_inc_value_changed"]
 [connection signal="value_changed" from="theta_inc" to="spiral" method="_on_theta_inc_value_changed"]
