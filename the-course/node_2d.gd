@@ -5,17 +5,22 @@ var count:int
 
 func _draw() -> void:
 	var l = $num_lines.value
-	for i in range(l):
-		draw_line(Vector2(i * 100,0), Vector2(i * 100, 500), Color.BEIGE, 10)
+	#for i in range(l):
+		#draw_line(Vector2(i * 100,0), Vector2(i * 100, 500), Color.BEIGE, 10)
 	
 	
-	var theta_inc = PI * 2.0 / l
+	var theta_inc = 1
+	var px=0
+	var py=0
+	var r=0
 	for i in range(l):
 		var theta = theta_inc * i
 		var x = sin(theta) * radius
 		var y = cos(theta) * radius
-		draw_circle(Vector2(x, y), radius, Color.CORNSILK, false)
-		
+		draw_line(Vector2(px, py), Vector2(x, y), Color.DARK_MAGENTA, 10)
+		px=x
+		py=y
+		r=r+10
 		
 		pass
 		
