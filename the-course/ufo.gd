@@ -26,6 +26,10 @@ func _ready() -> void:
 		var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(self, "scale", Vector2.ONE, 1)
 		tween.tween_property(self, "position", position + Vector2.RIGHT * 200, 2)
+		tween.tween_property(self, "position", position + Vector2.LEFT * 200, 2)
+		tween.tween_property(self, "position", position + Vector2.UP * 200, 2)
+		tween.tween_property(self, "position", position + Vector2.DOWN * 200, 2)
+		
 		# vary the pitch
 		$Synth.pitch_scale = randf_range(0.7, 1.3)
 		# wait 2 seconds
