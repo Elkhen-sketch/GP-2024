@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://cynbks8tkuti"]
+
+[ext_resource type="Texture2D" uid="uid://dnku55dcgmtb2" path="res://icon.svg" id="1_fl5k5"]
+[ext_resource type="Script" uid="uid://qbfxypcsd0jb" path="res://jump_dunde.gd" id="2_7cbhv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cbhv"]
+size = Vector2(658, 117)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17da5"]
+size = Vector2(120, 118.5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(334, 493)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+
+[node name="Icon" type="Sprite2D" parent="Platform/Sprite2D"]
+position = Vector2(4, 5)
+scale = Vector2(5.0957, 0.919922)
+texture = ExtResource("1_fl5k5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(5, 8.5)
+shape = SubResource("RectangleShape2D_7cbhv")
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(788, 378)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform2"]
+
+[node name="Icon" type="Sprite2D" parent="Platform2/Sprite2D"]
+position = Vector2(4, 5)
+scale = Vector2(5.0957, 0.919922)
+texture = ExtResource("1_fl5k5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2(5, 8.5)
+shape = SubResource("RectangleShape2D_7cbhv")
+
+[node name="Platform3" type="StaticBody2D" parent="."]
+position = Vector2(1287, 499)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform3"]
+
+[node name="Icon" type="Sprite2D" parent="Platform3/Sprite2D"]
+position = Vector2(4, 5)
+scale = Vector2(5.0957, 0.919922)
+texture = ExtResource("1_fl5k5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
+position = Vector2(5, 8.5)
+shape = SubResource("RectangleShape2D_7cbhv")
+
+[node name="Jump_dunde" type="CharacterBody2D" parent="."]
+script = ExtResource("2_7cbhv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Jump_dunde"]
+position = Vector2(140, 117)
+texture = ExtResource("1_fl5k5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jump_dunde"]
+position = Vector2(141, 115.75)
+shape = SubResource("RectangleShape2D_17da5")
