@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cynbks8tkuti"]
+[gd_scene load_steps=6 format=3 uid="uid://cynbks8tkuti"]
 
 [ext_resource type="Texture2D" uid="uid://dnku55dcgmtb2" path="res://icon.svg" id="1_fl5k5"]
 [ext_resource type="Script" uid="uid://qbfxypcsd0jb" path="res://jump_dunde.gd" id="2_7cbhv"]
@@ -8,6 +8,9 @@ size = Vector2(658, 117)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17da5"]
 size = Vector2(120, 118.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0eo6v"]
+size = Vector2(129, 117)
 
 [node name="Node2D" type="Node2D"]
 
@@ -63,3 +66,17 @@ texture = ExtResource("1_fl5k5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Jump_dunde"]
 position = Vector2(141, 115.75)
 shape = SubResource("RectangleShape2D_17da5")
+
+[node name="Coin" type="Area2D" parent="."]
+position = Vector2(520, 209)
+
+[node name="Sprite2D" type="Sprite2D" parent="Coin"]
+position = Vector2(339, 50)
+scale = Vector2(1, 0.953125)
+texture = ExtResource("1_fl5k5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
+position = Vector2(342, 48)
+shape = SubResource("RectangleShape2D_0eo6v")
+
+[connection signal="body_entered" from="Coin" to="Jump_dunde" method="_on_coin_body_entered"]

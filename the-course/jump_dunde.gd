@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -600.0
 
 
 func _physics_process(delta: float) -> void:
@@ -23,3 +23,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_coin_body_entered(body: Node2D) -> void:
+	if body.name == "jump_dunde":
+		body.score = body.score + 1
+		self.queue_free()
+	pass # Replace with function body.
